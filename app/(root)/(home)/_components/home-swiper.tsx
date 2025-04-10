@@ -91,7 +91,7 @@ const HomeSwiper = () => {
                 <div className="w-full md:w-1/2 p-8 z-10">
                   <div className="flex items-center gap-3 mb-4">
                     <Image
-                      src="/placeholder.svg?height=40&width=40"
+                      src="https://prd.place/270/250"
                       alt="Apple"
                       width={40}
                       height={40}
@@ -114,7 +114,7 @@ const HomeSwiper = () => {
                 </div>
                 <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-1/2 h-full hidden md:block">
                   <Image
-                    src="/placeholder.svg?height=500&width=500"
+                    src="https://prd.place/270/250"
                     alt="iPhone 14"
                     width={500}
                     height={500}
@@ -146,7 +146,7 @@ const HomeSwiper = () => {
                 </div>
                 <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-1/2 h-full hidden md:block">
                   <Image
-                    src="/placeholder.svg?height=500&width=500"
+                    src="https://prd.place/250/250"
                     alt="Summer Collection"
                     width={500}
                     height={500}
@@ -178,7 +178,7 @@ const HomeSwiper = () => {
                 </div>
                 <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-1/2 h-full hidden md:block">
                   <Image
-                    src="/placeholder.svg?height=500&width=500"
+                    src="https://prd.place/201/250"
                     alt="Headphones"
                     width={500}
                     height={500}

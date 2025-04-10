@@ -5,10 +5,12 @@ import { usePathname } from "next/navigation";
 import { Search, Heart, ShoppingCart, ChevronDown, User } from "lucide-react";
 import { useState } from "react";
 import { headerNavLinks } from "@/constant";
+import { useAppContext } from "@/context/product.context";
 
 const Header = () => {
   const pathname = usePathname();
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState<boolean>(false);
+  const { cartProducts, likedProducts } = useAppContext();
 
   const isActive = (path: string) => {
     return pathname === path ? "border-b-2 border-black" : "hover:text-gray-500";
@@ -81,13 +83,14 @@ const Header = () => {
                 className="relative"
               >
                 <Heart size={20} />
+                {!!likedProducts?.length && <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">{likedProducts?.length}</span>}
               </button>
               <button
                 aria-label="Cart"
                 className="relative"
               >
                 <ShoppingCart size={20} />
-                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">2</span>
+                {!!cartProducts?.length && <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">{cartProducts?.length}</span>}
               </button>
               <div className="relative">
                 <button

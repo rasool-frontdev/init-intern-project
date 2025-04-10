@@ -1,6 +1,5 @@
 import HomeSwiper from "./_components/home-swiper";
 import HomeCategories from "./_components/home-categories";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 const Home = () => {
