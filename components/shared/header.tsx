@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { Search, Heart, ShoppingCart, ChevronDown, User } from "lucide-react";
 import { useState } from "react";
 
-export default function Header() {
+const Header = () => {
   const pathname = usePathname();
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
 
@@ -52,7 +52,7 @@ export default function Header() {
           <nav className="hidden md:flex items-center space-x-8">
             <Link
               href="/"
-              className={`text-sm ${isActive("/")}`}
+              className={`text-sm`}
             >
               Home
             </Link>
@@ -151,4 +151,6 @@ export default function Header() {
       </div>
     </header>
   );
-}
+};
+
+export default Header;

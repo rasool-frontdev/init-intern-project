@@ -1,13 +1,7 @@
-// app/page.tsx или pages/index.tsx (если используешь pages directory)
-
 import HomeCard from "@/components/cards/home.card";
 import { ProductType } from "@/types";
 import axios from "axios";
 import SectionTitle from "./section-title";
-
-interface HomeCategoriesProps {
-  products: ProductType[];
-}
 
 const HomeCategories = async () => {
   let products: ProductType[] = [];

@@ -6,7 +6,7 @@ import Link from "next/link";
 import useEmblaCarousel from "embla-carousel-react";
 import { ArrowRight, Package, X, Star, LogOut } from "lucide-react";
 
-export default function HomeSwiper() {
+const HomeSwiper = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
@@ -204,4 +204,6 @@ export default function HomeSwiper() {
       </div>
     </div>
   );
-}
+};
+
+export default HomeSwiper;
