@@ -1,7 +1,7 @@
 import HomeCard from "@/components/cards/home.card";
 import { ProductType } from "@/types";
+import SectionTitle from "../../../../components/shared/section-title";
 import axios from "axios";
-import SectionTitle from "./section-title";
 
 const HomeCategories = async () => {
   let products: ProductType[] = [];

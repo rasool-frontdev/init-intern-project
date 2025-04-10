@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`antialiased`}>
-        <NextTopLoader />
+        <NextTopLoader showSpinner={false} />
         <div>
           <Header />
           <main className="min-h-screen">{children}</main>
