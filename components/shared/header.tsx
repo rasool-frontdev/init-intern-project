@@ -4,10 +4,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Search, Heart, ShoppingCart, ChevronDown, User } from "lucide-react";
 import { useState } from "react";
+import { headerNavLinks } from "@/constant";
 
 const Header = () => {
   const pathname = usePathname();
-  const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
+  const [isUserDropdownOpen, setIsUserDropdownOpen] = useState<boolean>(false);
 
   const isActive = (path: string) => {
     return pathname === path ? "border-b-2 border-black" : "hover:text-gray-500";
@@ -23,7 +24,7 @@ const Header = () => {
         <div className="flex container mx-auto">
           <div className="flex-1"></div>
           <div className="text-center">
-            <span>Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%</span>{" "}
+            <span>Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%</span>
             <Link
               href="#"
               className="font-medium underline"
@@ -50,30 +51,15 @@ const Header = () => {
           </Link>
 
           <nav className="hidden md:flex items-center space-x-8">
-            <Link
-              href="/"
-              className={`text-sm`}
-            >
-              Home
-            </Link>
-            <Link
-              href="/contact"
-              className={`text-sm ${isActive("/contact")}`}
-            >
-              Contact
-            </Link>
-            <Link
-              href="/about"
-              className={`text-sm ${isActive("/about")}`}
-            >
-              About
-            </Link>
-            <Link
-              href="/sign-up"
-              className={`text-sm ${isActive("/sign-up")}`}
-            >
-              Sign Up
-            </Link>
+            {headerNavLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`text-sm ${isActive(link.href)}`}
+              >
+                {link.title}
+              </Link>
+            ))}
           </nav>
 
           <div className="flex items-center gap-4">
