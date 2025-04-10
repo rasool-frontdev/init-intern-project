@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import NextTopLoader from "nextjs-toploader";
 import Header from "@/components/shared/header";
 import Footer from "@/components/shared/footer";
-
+import { AppWrapper } from "@/context/product.context";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -19,11 +19,13 @@ export default function RootLayout({
     <html lang="en">
       <body className={`antialiased`}>
         <NextTopLoader showSpinner={false} />
-        <div>
-          <Header />
-          <main className="min-h-screen">{children}</main>
-          <Footer />
-        </div>
+        <AppWrapper>
+          <div>
+            <Header />
+            <main className="min-h-screen">{children}</main>
+            <Footer />
+          </div>
+        </AppWrapper>
       </body>
     </html>
   );

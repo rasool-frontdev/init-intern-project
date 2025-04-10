@@ -1,5 +1,5 @@
 const SingUp = () => {
-  return <div>SingUp</div>;
+  return <section>SingUp</section>;
 };
 
 export default SingUp;
