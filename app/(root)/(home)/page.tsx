@@ -11,7 +11,7 @@ const Home = () => {
       <div className="flex justify-center items-center">
         <Link
           href={"/products"}
-          className="rounded-none bg-red-500 text-white py-4 px-6"
+          className="rounded-none bg-red-500 text-white py-3 px-6"
         >
           View All Products
         </Link>

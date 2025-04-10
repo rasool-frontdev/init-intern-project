@@ -18,9 +18,10 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
   return (
     <Link
       href={`/product/${slug}`}
-      className="relative cursor-pointer shadow w-full max-w-xs bg-white rounded-md overflow-hidden hover:shadow-md border border-gray-100"
+      className="group relative cursor-pointer shadow w-full max-w-xs bg-white rounded-md overflow-hidden hover:shadow-md border border-gray-100"
     >
       {isOnSale && <Badge className="absolute top-2 left-2 bg-green-500 text-white z-20">Sale</Badge>}
+
       <div className="relative aspect-square bg-gray-50">
         <div className="absolute top-2 right-2 flex flex-col gap-2 z-10">
           <button className="bg-white p-1.5 rounded-full shadow-sm hover:bg-gray-100 transition-colors">
@@ -39,7 +40,7 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
       </div>
 
       <div className="p-3 space-y-2">
-        <button className="w-full py-2.5 bg-black text-white font-medium rounded hover:bg-gray-800 transition-colors">Add To Cart</button>
+        <button className="w-full py-2.5 bg-black text-white font-medium rounded transition-opacity hover:bg-gray-800 opacity-0 group-hover:opacity-100">Add To Cart</button>
 
         <h3 className="font-medium text-gray-900 uppercase text-sm">{name}</h3>
 
