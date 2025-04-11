@@ -26,10 +26,10 @@ const ProductDetail = () => {
   };
 
   return (
-    <section className="py-10 container ">
-      <div className="grid grid-cols-12 gap-6 ">
-        <div className="flex gap-4 w-full col-span-8 h-[513px]">
-          <div className="flex flex-col justify-between gap-4">
+    <section className="py-10 container">
+      <div className="grid lg:grid-cols-12 gap-6">
+        <div className="flex max-md:flex-col gap-4 w-full lg:col-span-8 xl:h-[513px]">
+          <div className="flex flex-wrap md:flex-col justify-between sm:gap-4">
             {productImages.map((image, index) => (
               <div
                 key={index}
@@ -53,11 +53,11 @@ const ProductDetail = () => {
               alt="Product main view"
               width={600}
               height={600}
-              className="w-full object-cover h-[512px]"
+              className="w-full object-cover h-full xl:h-[512px]"
             />
           </div>
         </div>
-        <div className="col-span-4">
+        <div className="w-full lg:col-span-4">
           <h6 className="font-bold text-2xl">Havic HV G-92 Gamepad</h6>
           <p className="flex items-center gap-2">
             <span className="flex items-center h-4">
@@ -74,68 +74,78 @@ const ProductDetail = () => {
             </span>
             (150 reviews) | <span className="text-green-500">In Stock</span>
           </p>
-          <span className="font-semibold text-2xl">192$</span>
+          <div className="flex items-center justify-between">
+            <span className="font-semibold text-2xl">192$</span>
+            <button
+              type="button"
+              className="rounded-md flex items-center justify-center lg:hidden p-1 border h-10 w-10"
+            >
+              <Heart />
+            </button>
+          </div>
           <p className="leading-5 mt-4">Beatae, facere velit quibusdam quaerat eligendi obcaecati aliquid optio iusto molestias minima unde quam repudiandae commodi deleniti.</p>
           <div className="h-[2px] rounded-md my-4 bg-gray-300"></div>
-          <div className="flex gap-4 items-center">
-            <span className="text-xl font-semibold">Colors:</span>
-            <div className="flex items-center gap-2">
-              <RadioGroup
-                value={selectedColor}
-                onValueChange={setSelectedColor}
-                className="flex gap-2"
-              >
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem
-                    value="white"
-                    id="white"
-                    className="sr-only"
-                  />
-                  <Label
-                    htmlFor="white"
-                    className={cn("w-6 h-6 rounded-full cursor-pointer bg-white border", selectedColor === "white" ? "ring-2 ring-primary ring-offset-2" : "border-gray-300")}
-                  />
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem
-                    value="red"
-                    id="red"
-                    className="sr-only"
-                  />
-                  <Label
-                    htmlFor="red"
-                    className={cn("w-6 h-6 rounded-full bg-red-500", selectedColor === "red" && "ring-2 ring-primary ring-offset-2")}
-                  />
-                </div>
-              </RadioGroup>
-            </div>
-          </div>
-          <div className="flex gap-4 items-center mt-4">
-            <span className="text-xl font-semibold">Sizes:</span>
-            <div className="flex items-center gap-2">
-              {productSizes.map((size) => (
+          <div className="flex max-sm:items-start max-sm:flex-col lg:flex-col max-lg:items-center gap-4">
+            <div className="flex gap-4 items-center">
+              <span className="text-xl font-semibold">Colors:</span>
+              <div className="flex items-center gap-2">
                 <RadioGroup
-                  value={selectedSize}
-                  onValueChange={setSelectedSize}
+                  value={selectedColor}
+                  onValueChange={setSelectedColor}
+                  className="flex gap-2"
                 >
-                  <RadioGroupItem
-                    value={size}
-                    id={size}
-                    className="sr-only"
-                  />
-                  <Label
-                    htmlFor={size}
-                    className={cn("border rounded-md cursor-pointer uppercase h-10 w-10 flex justify-center items-center", selectedSize === size ? "bg-primary text-primary-foreground" : "bg-background hover:bg-muted")}
-                  >
-                    {size}
-                  </Label>
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem
+                      value="white"
+                      id="white"
+                      className="sr-only"
+                    />
+                    <Label
+                      htmlFor="white"
+                      className={cn("w-6 h-6 rounded-full cursor-pointer bg-white border", selectedColor === "white" ? "ring-2 ring-primary ring-offset-2" : "border-gray-300")}
+                    />
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem
+                      value="red"
+                      id="red"
+                      className="sr-only"
+                    />
+                    <Label
+                      htmlFor="red"
+                      className={cn("w-6 h-6 rounded-full bg-red-500", selectedColor === "red" && "ring-2 ring-primary ring-offset-2")}
+                    />
+                  </div>
                 </RadioGroup>
-              ))}
+              </div>
+            </div>
+            <div className="flex gap-4 items-center">
+              <span className="text-xl font-semibold">Sizes:</span>
+              <div className="flex items-center gap-2">
+                {productSizes.map((size) => (
+                  <RadioGroup
+                    value={selectedSize}
+                    onValueChange={setSelectedSize}
+                  >
+                    <RadioGroupItem
+                      value={size}
+                      id={size}
+                      className="sr-only"
+                    />
+                    <Label
+                      htmlFor={size}
+                      className={cn("border rounded-md cursor-pointer uppercase h-10 w-10 flex justify-center items-center", selectedSize === size ? "bg-primary text-primary-foreground" : "bg-background hover:bg-muted")}
+                    >
+                      {size}
+                    </Label>
+                  </RadioGroup>
+                ))}
+              </div>
             </div>
           </div>
           <div className="my-2">
-            <div className="flex items-center gap-2">
-              <div className="flex items-center">
+            <div className="flex max-lg:flex-col gap-2">
+              <div className="flex items-center my-2">
                 <button
                   type="button"
                   className="border w-10 h-10 flex items-center justify-center rounded-l-md border-r-0"
@@ -143,7 +153,7 @@ const ProductDetail = () => {
                 >
                   <Minus />
                 </button>
-                <span className="flex items-center justify-center w-20 font-semibold text-xl border h-10">{quantity}</span>
+                <span className="flex items-center justify-center lg:w-20 font-semibold text-xl border h-10 w-full">{quantity}</span>
                 <button
                   type="button"
                   className="border w-10 h-10 flex items-center justify-center rounded-r-md p-1 border-l-0"
@@ -160,7 +170,7 @@ const ProductDetail = () => {
               </button>
               <button
                 type="button"
-                className="rounded-md p-1 border h-10 w-10"
+                className="rounded-md hidden lg:inline-block p-1 border h-10 w-10"
               >
                 <Heart />
               </button>

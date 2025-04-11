@@ -2,10 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Search, Heart, ShoppingCart, ChevronDown, User } from "lucide-react";
+import { Search, Heart, ShoppingCart, ChevronDown, User, AlignJustify } from "lucide-react";
 import { useState } from "react";
 import { headerNavLinks } from "@/constant";
 import { useAppContext } from "@/context";
+import { cn } from "@/lib/utils";
+import { Sheet, SheetClose, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import MenuButton from "./menu-button";
 
 const Header = () => {
   const pathname = usePathname();
@@ -52,12 +55,12 @@ const Header = () => {
             Exclusive
           </Link>
 
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-8">
             {headerNavLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-sm ${isActive(link.href)}`}
+                className={cn("text-sm", isActive(link.href))}
               >
                 {link.title}
               </Link>
@@ -65,7 +68,8 @@ const Header = () => {
           </nav>
 
           <div className="flex items-center gap-4">
-            <div className="hidden md:flex items-center bg-gray-100 rounded-md px-3 py-2">
+            <MenuButton />
+            <div className="hidden lg:flex items-center bg-gray-100 rounded-md px-3 py-2">
               <input
                 type="text"
                 placeholder="What are you looking for?"
