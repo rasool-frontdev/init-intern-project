@@ -24,7 +24,10 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <body>
-        <NextTopLoader showSpinner={false} />
+        <NextTopLoader
+          showSpinner={false}
+          color="#22C55E"
+        />
         <AppWrapperContext initialProducts={products}>
           <div>
             <Header />
