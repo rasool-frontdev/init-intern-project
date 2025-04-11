@@ -29,18 +29,18 @@ const ProductDetail = () => {
     <section className="py-10 container">
       <div className="grid lg:grid-cols-12 gap-6">
         <div className="flex max-md:flex-col gap-4 w-full lg:col-span-8 xl:h-[513px]">
-          <div className="flex flex-wrap md:flex-col justify-between sm:gap-4">
+          <div className="flex md:flex-col gap-2 md:gap-3 overflow-x-auto md:overflow-x-visible md:pb-0">
             {productImages.map((image, index) => (
               <div
                 key={index}
-                className={cn("w-28 h-28 border rounded cursor-pointer overflow-hidden", selectedImage === index ? "border-primary border-2" : "border-gray-200")}
+                className={cn("flex-shrink-0 w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 border rounded-lg cursor-pointer overflow-hidden transition-all", selectedImage === index ? "border-primary border-2 ring-2 ring-primary/30" : "border-gray-200 hover:border-gray-300")}
                 onClick={() => setSelectedImage(index)}
               >
                 <Image
                   src={image || "/placeholder.svg"}
                   alt={`Product view ${index + 1}`}
-                  width={120}
-                  height={120}
+                  width={96}
+                  height={96}
                   className="object-cover w-full h-full"
                 />
               </div>
@@ -148,7 +148,7 @@ const ProductDetail = () => {
               <div className="flex items-center my-2">
                 <button
                   type="button"
-                  className="border w-10 h-10 flex items-center justify-center rounded-l-md border-r-0"
+                  className="border w-20 md:w-10 h-10 flex items-center justify-center rounded-l-md border-r-0"
                   onClick={decreaseQuantity}
                 >
                   <Minus />
@@ -156,7 +156,7 @@ const ProductDetail = () => {
                 <span className="flex items-center justify-center lg:w-20 font-semibold text-xl border h-10 w-full">{quantity}</span>
                 <button
                   type="button"
-                  className="border w-10 h-10 flex items-center justify-center rounded-r-md p-1 border-l-0"
+                  className="border w-20 md:w-10 h-10 flex items-center justify-center rounded-r-md p-1 border-l-0"
                   onClick={increaseQuantity}
                 >
                   <Plus />

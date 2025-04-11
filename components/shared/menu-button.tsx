@@ -21,8 +21,8 @@ const MenuButton = () => {
           <AlignJustify />
         </SheetTrigger>
         <SheetContent>
-          <SheetHeader>
-            <SheetTitle>Exclusive</SheetTitle>
+          <SheetHeader className="border-b">
+            <SheetTitle className="text-start">Exclusive</SheetTitle>
             <SheetDescription></SheetDescription>
           </SheetHeader>
           <div className="flex items-center justify-center">
@@ -37,6 +37,7 @@ const MenuButton = () => {
                 </Link>
               ))}
             </nav>
+            <p className="border-t absolute bottom-8 border-white/10 mt-8 pt-6 text-center text-xs text-gray-400">© Copyright 2023. All Rights Reserved.</p>
           </div>
         </SheetContent>
       </Sheet>

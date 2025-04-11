@@ -48,7 +48,7 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
   return (
     <div
       onClick={handleCard}
-      className="group relative cursor-pointer shadow w-full max-w-xs bg-white rounded-md overflow-hidden hover:shadow-md border border-gray-100"
+      className="group relative cursor-pointer shadow-md w-full bg-white rounded-md overflow-hidden hover:shadow-md border border-gray-100"
     >
       {isOnSale && <Badge className="absolute top-2 left-2 bg-green-500 text-white z-20">Sale</Badge>}
       <div className="relative aspect-square bg-gray-50">

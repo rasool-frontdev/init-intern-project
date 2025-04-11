@@ -25,10 +25,10 @@ const Header = () => {
 
   return (
     <header className="w-full">
-      <div className="bg-black  text-white py-2 px-4 flex justify-between items-center text-sm">
+      <div className="bg-black  text-white py-2 md:px-4 flex justify-between items-center text-sm">
         <div className="flex container mx-auto">
           <div className="flex-1"></div>
-          <div className="text-center">
+          <div className="md:text-center text-xs">
             <span>Summer Sale For All Swim Suits And Free Express Delivery - OFF 50% </span>
             <Link
               href="#"
@@ -38,7 +38,7 @@ const Header = () => {
             </Link>
           </div>
           <div className="flex-1 flex justify-end">
-            <div className="flex items-center gap-1">
+            <div className="flex items-center w-20 gap-1">
               <span>English</span>
               <ChevronDown size={16} />
             </div>
