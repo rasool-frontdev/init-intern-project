@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import NextTopLoader from "nextjs-toploader";
 import Header from "@/components/shared/header";
 import Footer from "@/components/shared/footer";
-import { AppWrapperContext } from "@/context/product.context";
+import { AppWrapperContext } from "@/context";
 import { getAllProductListApi } from "@/services";
 import "./globals.css";
 
@@ -28,7 +28,7 @@ export default async function RootLayout({
         <AppWrapperContext initialProducts={products}>
           <div>
             <Header />
-            <main className="min-h-screen">{children}</main>
+            <main className="min-h-[75vh]">{children}</main>
             <Footer />
           </div>
         </AppWrapperContext>

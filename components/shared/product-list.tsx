@@ -2,7 +2,7 @@
 
 import { ProductType } from "@/types";
 import ProductCard from "../cards/product.card";
-import { useAppContext } from "@/context/product.context";
+import { useAppContext } from "@/context";
 
 const ProductList = () => {
   const { products } = useAppContext();

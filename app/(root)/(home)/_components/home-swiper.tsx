@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import useEmblaCarousel from "embla-carousel-react";
 import { ArrowRight, Package, X, Star, LogOut } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const HomeSwiper = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
@@ -84,7 +85,6 @@ const HomeSwiper = () => {
         ref={emblaRef}
       >
         <div className="flex">
-          {/* Slide 1 - iPhone */}
           <div className="flex-[0_0_100%] min-w-0 relative">
             <div className="bg-black text-white h-[400px] md:h-[500px] relative overflow-hidden">
               <div className="container mx-auto h-full flex items-center">
@@ -125,7 +125,6 @@ const HomeSwiper = () => {
             </div>
           </div>
 
-          {/* Slide 2 */}
           <div className="flex-[0_0_100%] min-w-0 relative">
             <div className="bg-black text-white h-[400px] md:h-[500px] relative overflow-hidden">
               <div className="container mx-auto h-full flex items-center">
@@ -157,7 +156,6 @@ const HomeSwiper = () => {
             </div>
           </div>
 
-          {/* Slide 3 */}
           <div className="flex-[0_0_100%] min-w-0 relative">
             <div className="bg-black text-white h-[400px] md:h-[500px] relative overflow-hidden">
               <div className="container mx-auto h-full flex items-center">
@@ -190,13 +188,11 @@ const HomeSwiper = () => {
           </div>
         </div>
       </div>
-
-      {/* Dots */}
       <div className="flex justify-center gap-2 mt-4">
         {scrollSnaps.map((_, index) => (
           <button
             key={index}
-            className={`w-2 h-2 rounded-full transition-all ${index === selectedIndex ? "bg-red-500 w-4" : "bg-gray-400"}`}
+            className={cn("w-2 h-2 rounded-full transition-all", index === selectedIndex ? "bg-red-500 w-4" : "bg-gray-400")}
             onClick={() => scrollTo(index)}
             aria-label={`Go to slide ${index + 1}`}
           />

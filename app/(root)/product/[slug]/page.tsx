@@ -1,20 +1,70 @@
-import { Heart, Minus, Plus, RefreshCw } from "lucide-react";
-import React from "react";
+"use client";
+
 import { TbTruckDelivery } from "react-icons/tb";
+import { productImages, productSizes } from "@/constant";
+import { Heart, Minus, Plus, RefreshCw } from "lucide-react";
+import Image from "next/image";
+import React, { useState } from "react";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { cn } from "@/lib/utils";
 
 const ProductDetail = () => {
+  const [selectedImage, setSelectedImage] = useState(0);
+  const [quantity, setQuantity] = useState(1);
+  const [selectedColor, setSelectedColor] = useState("white");
+  const [selectedSize, setSelectedSize] = useState("m");
+
+  const decreaseQuantity = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
+
+  const increaseQuantity = () => {
+    setQuantity(quantity + 1);
+  };
+
   return (
-    <section className="py-8 container">
-      <div className="flex justify-between gap-6">
-        <div className="w-[66%]"></div>
-        <div className="w-[33%]">
+    <section className="py-10 container ">
+      <div className="grid grid-cols-12 gap-6 ">
+        <div className="flex gap-4 w-full col-span-8 h-[513px]">
+          <div className="flex flex-col justify-between gap-4">
+            {productImages.map((image, index) => (
+              <div
+                key={index}
+                className={cn("w-28 h-28 border rounded cursor-pointer overflow-hidden", selectedImage === index ? "border-primary border-2" : "border-gray-200")}
+                onClick={() => setSelectedImage(index)}
+              >
+                <Image
+                  src={image || "/placeholder.svg"}
+                  alt={`Product view ${index + 1}`}
+                  width={120}
+                  height={120}
+                  className="object-cover w-full h-full"
+                />
+              </div>
+            ))}
+          </div>
+
+          <div className="border rounded-lg overflow-hidden w-full">
+            <Image
+              src={productImages[selectedImage] || "/placeholder.svg"}
+              alt="Product main view"
+              width={600}
+              height={600}
+              className="w-full object-cover h-[512px]"
+            />
+          </div>
+        </div>
+        <div className="col-span-4">
           <h6 className="font-bold text-2xl">Havic HV G-92 Gamepad</h6>
           <p className="flex items-center gap-2">
             <span className="flex items-center h-4">
               {[...Array(5)].map((_, i) => (
                 <svg
                   key={i}
-                  className={`w-4 h-4 ${i < Math.floor(5) ? "text-yellow-400" : "text-gray-300"}`}
+                  className={cn("w-4 h-4", i < Math.floor(5) ? "text-yellow-400" : "text-gray-300")}
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
@@ -28,20 +78,59 @@ const ProductDetail = () => {
           <p className="leading-5 mt-4">Beatae, facere velit quibusdam quaerat eligendi obcaecati aliquid optio iusto molestias minima unde quam repudiandae commodi deleniti.</p>
           <div className="h-[2px] rounded-md my-4 bg-gray-300"></div>
           <div className="flex gap-4 items-center">
-            <span className="text-2xl font-semibold">Colors:</span>
+            <span className="text-xl font-semibold">Colors:</span>
             <div className="flex items-center gap-2">
-              <span className="w-6 h-6 bg-blue-500 inline-block rounded-full"></span>
-              <span className="w-6 h-6 bg-red-500 inline-block rounded-full"></span>
+              <RadioGroup
+                value={selectedColor}
+                onValueChange={setSelectedColor}
+                className="flex gap-2"
+              >
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem
+                    value="white"
+                    id="white"
+                    className="sr-only"
+                  />
+                  <Label
+                    htmlFor="white"
+                    className={cn("w-6 h-6 rounded-full cursor-pointer bg-white border", selectedColor === "white" ? "ring-2 ring-primary ring-offset-2" : "border-gray-300")}
+                  />
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem
+                    value="red"
+                    id="red"
+                    className="sr-only"
+                  />
+                  <Label
+                    htmlFor="red"
+                    className={cn("w-6 h-6 rounded-full bg-red-500", selectedColor === "red" && "ring-2 ring-primary ring-offset-2")}
+                  />
+                </div>
+              </RadioGroup>
             </div>
           </div>
           <div className="flex gap-4 items-center mt-4">
-            <span className="text-2xl font-semibold">Sizes:</span>
+            <span className="text-xl font-semibold">Sizes:</span>
             <div className="flex items-center gap-2">
-              <span className="w-10 h-10 border  rounded flex items-center justify-center font-semibold">XS</span>
-              <span className="w-10 h-10 border  rounded flex items-center justify-center font-semibold">S</span>
-              <span className="w-10 h-10 border  rounded flex items-center justify-center font-semibold">MD</span>
-              <span className="w-10 h-10 border  rounded flex items-center justify-center font-semibold">L</span>
-              <span className="w-10 h-10 border  rounded flex items-center justify-center font-semibold">XL</span>
+              {productSizes.map((size) => (
+                <RadioGroup
+                  value={selectedSize}
+                  onValueChange={setSelectedSize}
+                >
+                  <RadioGroupItem
+                    value={size}
+                    id={size}
+                    className="sr-only"
+                  />
+                  <Label
+                    htmlFor={size}
+                    className={cn("border rounded-md cursor-pointer uppercase h-10 w-10 flex justify-center items-center", selectedSize === size ? "bg-primary text-primary-foreground" : "bg-background hover:bg-muted")}
+                  >
+                    {size}
+                  </Label>
+                </RadioGroup>
+              ))}
             </div>
           </div>
           <div className="my-2">
@@ -50,13 +139,15 @@ const ProductDetail = () => {
                 <button
                   type="button"
                   className="border w-10 h-10 flex items-center justify-center rounded-l-md border-r-0"
+                  onClick={decreaseQuantity}
                 >
                   <Minus />
                 </button>
-                <span className="inline-block  w-16 h-10 text-center border p-1 font-bold ">1</span>
+                <span className="flex items-center justify-center w-20 font-semibold text-xl border h-10">{quantity}</span>
                 <button
                   type="button"
                   className="border w-10 h-10 flex items-center justify-center rounded-r-md p-1 border-l-0"
+                  onClick={increaseQuantity}
                 >
                   <Plus />
                 </button>
@@ -69,13 +160,13 @@ const ProductDetail = () => {
               </button>
               <button
                 type="button"
-                className="rounded-md p-1 border"
+                className="rounded-md p-1 border h-10 w-10"
               >
                 <Heart />
               </button>
             </div>
           </div>
-          <div className="border p-3 mt-6 flex items-center gap-3 font-semibold">
+          <div className="border rounded-t-md p-3 mt-6 flex items-center gap-3 font-semibold">
             <span>
               <TbTruckDelivery size={40} />
             </span>
@@ -84,7 +175,7 @@ const ProductDetail = () => {
               <span className="underline">Enter your postal code for Delivery Ability</span>
             </div>
           </div>
-          <div className="border p-3 flex items-center gap-3 font-semibold">
+          <div className="border rounded-b-md p-3 flex items-center gap-3 font-semibold">
             <span>
               <RefreshCw size={40} />
             </span>

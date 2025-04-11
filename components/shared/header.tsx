@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { Search, Heart, ShoppingCart, ChevronDown, User } from "lucide-react";
 import { useState } from "react";
 import { headerNavLinks } from "@/constant";
-import { useAppContext } from "@/context/product.context";
+import { useAppContext } from "@/context";
 
 const Header = () => {
   const pathname = usePathname();
@@ -26,12 +26,12 @@ const Header = () => {
         <div className="flex container mx-auto">
           <div className="flex-1"></div>
           <div className="text-center">
-            <span>Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%</span>
+            <span>Summer Sale For All Swim Suits And Free Express Delivery - OFF 50% </span>
             <Link
               href="#"
               className="font-medium underline"
             >
-              ShopNow
+              Shop Now
             </Link>
           </div>
           <div className="flex-1 flex justify-end">
